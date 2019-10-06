@@ -1,0 +1,30 @@
+#!/bin/sh
+
+sqlite3 /tmp/tcc.db "CREATE TABLE call_history ( call_id INTEGER NOT NULL PRIMARY KEY, sip_account_id INTEGER NOT NULL, source TEXT NOT NULL, destination TEXT NULL, start_date INTEGER NOT NULL, end_date INTEGER NOT NULL);"
+sqlite3 /tmp/tcc.db "CREATE TABLE sip_account ( sip_account_id INTEGER PRIMARY KEY, enabled BOOL NOT NULL, send_register BOOL NOT NULL, auth_name TEXT NULL, password TEXT NOT NULL, sip_server TEXT NOT NULL, server_port INTEGER NOT NULL);"
+sqlite3 /tmp/tcc.db "CREATE TABLE CALL ( call_id INTEGER PRIMARY KEY, sip_account_id INTEGER NOT NULL, destination TEXT NULL);"
+
+echo "Inserting call_history data..."
+sqlite3 /tmp/tcc.db "insert into call_history (sip_account_id,source,destination,start_date, end_date) values (1,\"200@192.168.0.15\",\"201@192.168.0.30\",1569794579, 1569794682);"
+sqlite3 /tmp/tcc.db "insert into call_history (sip_account_id,source,destination,start_date, end_date) values (2,\"201@192.168.0.16\",\"201@192.168.0.30\",1569794579, 1569794782);"
+sqlite3 /tmp/tcc.db "insert into call_history (sip_account_id,source,destination,start_date, end_date) values (1,\"200@192.168.0.15\",\"201@192.168.0.30\",1569794579, 1569794622);"
+sqlite3 /tmp/tcc.db "insert into call_history (sip_account_id,source,destination,start_date, end_date) values (1,\"200@192.168.0.15\",\"201@192.168.0.30\",1569794579, 1569794800);"
+sqlite3 /tmp/tcc.db "insert into call_history (sip_account_id,source,destination,start_date, end_date) values (3,\"202@192.168.0.17\",\"201@192.168.0.30\",1569794579, 1569794611);"
+sqlite3 /tmp/tcc.db "insert into call_history (sip_account_id,source,destination,start_date, end_date) values (1,\"200@192.168.0.15\",\"201@192.168.0.30\",1569794579, 1569794590);"
+echo "Done."
+
+echo "Inserting sip_account data..."
+sqlite3 /tmp/tcc.db "insert into sip_account (sip_account_id, enabled, send_register, auth_name, password, sip_server, server_port) values (1, 1, 1, \"200\", \"1234\", \"192.168.0.30\", 5060);"
+sqlite3 /tmp/tcc.db "insert into sip_account (sip_account_id, enabled, send_register, auth_name, password, sip_server, server_port) values (2, 1, 1, \"201\", \"1111\", \"192.168.0.30\", 5060);"
+sqlite3 /tmp/tcc.db "insert into sip_account (sip_account_id, enabled, send_register, auth_name, password, sip_server, server_port) values (3, 0, 1, \"202\", \"2222\", \"192.168.0.30\", 5060);"
+sqlite3 /tmp/tcc.db "insert into sip_account (sip_account_id, enabled, send_register, auth_name, password, sip_server, server_port) values (4, 1, 0, \"203\", \"3333\", \"192.168.0.30\", 5060);"
+sqlite3 /tmp/tcc.db "insert into sip_account (sip_account_id, enabled, send_register, auth_name, password, sip_server, server_port) values (5, 0, 0, \"204\", \"4444\", \"192.168.0.30\", 5060);"
+sqlite3 /tmp/tcc.db "insert into sip_account (sip_account_id, enabled, send_register, auth_name, password, sip_server, server_port) values (6, 1, 1, \"205\", \"5555\", \"192.168.0.30\", 5060);"
+echo "Done."
+
+echo "Inserting call data..."
+sqlite3 /tmp/tcc.db "insert into call (call_id, sip_account_id, destination) values (1, 1, \"202@192.168.0.30\");"
+sqlite3 /tmp/tcc.db "insert into call (call_id, sip_account_id, destination) values (2, 3, \"203@192.168.0.30\");"
+sqlite3 /tmp/tcc.db "insert into call (call_id, sip_account_id, destination) values (3, 5, \"206@192.168.0.30\");"
+sqlite3 /tmp/tcc.db "insert into call (call_id, sip_account_id, destination) values (4, 2, \"204@192.168.0.30\");"
+echo "Done."
