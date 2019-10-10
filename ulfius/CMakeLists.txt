@@ -6,7 +6,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 
 link_directories($ENV{LD_LIBRARY_PATH})
 
-include_directories( app/include/ )
+# include_directories( app/include/ )
 
 file(GLOB headers "app/include/**/*.h" )
 file(GLOB sources "app/src/**/*.c" )
@@ -23,7 +23,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set(CMAKE_MACOSX_RPATH ON)
 endif()
 
-link_directories("/usr/local/lib")
+# link_directories("/usr/local/lib")
 
 add_executable(ulfius_mock "app/src/main.c" ${sources} ${headers})
 target_link_libraries(ulfius_mock ulfius jansson orcania yder sqlite3)
