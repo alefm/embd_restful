@@ -26,7 +26,7 @@ endif()
 link_directories("/usr/local/lib")
 
 add_executable(ulfius_mock "app/src/main.c" ${sources} ${headers})
-target_link_libraries(ulfius_mock bifrost bifrost_json ulfius jansson orcania yder sqlite3)
+target_link_libraries(ulfius_mock ulfius jansson orcania yder sqlite3)
 
 install(TARGETS ulfius_mock
     RUNTIME DESTINATION bin
