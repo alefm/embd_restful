@@ -6,7 +6,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 
 link_directories($ENV{LD_LIBRARY_PATH})
 
-# include_directories( app/include/ )
+include_directories( app/include/ )
 
 file(GLOB headers "app/include/**/*.h" )
 file(GLOB sources "app/src/**/*.c" )
