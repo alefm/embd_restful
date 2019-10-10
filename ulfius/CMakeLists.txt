@@ -6,7 +6,10 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 
 link_directories($ENV{LD_LIBRARY_PATH})
 
-include_directories( app/include/ )
+include_directories(
+    app/include/
+    /home/alef/rpi/rootfs/usr/include/ 
+    /home/alef/rpi/rootfs/usr/include/arm-linux-gnueabihf/)
 
 file(GLOB headers "app/include/**/*.h" )
 file(GLOB sources "app/src/**/*.c" )
@@ -23,10 +26,10 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set(CMAKE_MACOSX_RPATH ON)
 endif()
 
-link_directories("/usr/local/lib")
+link_directories("/home/alef/rpi/rootfs/lib")
 
 add_executable(ulfius_mock "app/src/main.c" ${sources} ${headers})
-target_link_libraries(ulfius_mock bifrost bifrost_json ulfius jansson orcania yder sqlite3)
+target_link_libraries(ulfius_mock ulfius jansson orcania yder sqlite3)
 
 install(TARGETS ulfius_mock
     RUNTIME DESTINATION bin

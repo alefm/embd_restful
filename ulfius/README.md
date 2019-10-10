@@ -22,10 +22,18 @@ $ sudo make install
 ## Instalação
 
 ```console
-$ cd TCC/mocks/ulfius
+$ cd /ulfius
 $ mkdir build && cd build
 $ cmake ../
 $ make && sudo make install
+```
+
+Cross-Compile
+```console
+$ cd /ulfius
+$ mkdir build && cd build
+$ cmake -DCMAKE_TOOLCHAIN_FILE=../Toolchain-RaspberryPi.cmake ../
+$ make
 ```
 
 ## Banco de dados
