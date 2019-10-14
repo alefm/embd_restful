@@ -24,7 +24,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set(CMAKE_MACOSX_RPATH ON)
 endif()
 
-link_directories("/usr/local/lib")
+# link_directories("/usr/local/lib")
 
 add_executable(pistache-mock "app/src/main.cpp" ${sources} ${headers})
 target_link_libraries(pistache-mock pistache jansson sqlite3)
