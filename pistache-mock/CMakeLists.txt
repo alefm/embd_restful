@@ -7,6 +7,8 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 
 link_directories($ENV{LD_LIBRARY_PATH})
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -latomic")
+
 include_directories( app/include/ )
 
 file(GLOB headers "app/include/**/*.hpp")
