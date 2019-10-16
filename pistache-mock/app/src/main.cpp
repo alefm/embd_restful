@@ -21,7 +21,7 @@ void setupRoutes(Rest::Router& router) {
 }
 
 int main() {
-  const Pistache::Address address("localhost", Pistache::Port(8080));
+  const Pistache::Address address("0.0.0.0", Pistache::Port(8080));
   Rest::Router router;
   Http::Endpoint httpServer(address);
 

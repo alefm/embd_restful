@@ -79,7 +79,7 @@ json_t * DatabaseCallHistory::database_get_call_history(std::string id){
 
     printf("Database connection okay!\n");
 
-    sprintf(sql, GET_CALL_HISTORY, id);
+    sprintf(sql, GET_CALL_HISTORY, id.c_str());
     if(sqlite3_prepare_v2(db, sql, 128, &res, NULL) != SQLITE_OK) {
         sqlite3_close(db);
         printf("Can't retrieve data: %s\n", sqlite3_errmsg(db));
@@ -116,7 +116,7 @@ bool DatabaseCallHistory::database_remove_call_history(std::string id){
     }
 
     printf("Database connection okay!\n");
-    sprintf(sql, DELETE_CALL_HISTORY, id);
+    sprintf(sql, DELETE_CALL_HISTORY, id.c_str());
     if(sqlite3_exec(db, sql, 0, 0, &err_msg) != SQLITE_OK){
         printf("SQL error: %s\n", err_msg);
 
