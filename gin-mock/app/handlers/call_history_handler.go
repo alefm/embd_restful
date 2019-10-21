@@ -1,11 +1,14 @@
 package handlers
 
 import (
+	"gin-mock/database"
+
 	"github.com/gin-gonic/gin"
 )
 
 func RetrieveAllCallHistory(c *gin.Context) {
-	// fmt.Println("Received RetrieveAllCallHistory")
+	history := database.GetAllCallHistory()
+	c.JSON(200, history)
 }
 
 func RemoveAllCallHistory(c *gin.Context) {
